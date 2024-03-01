@@ -13,9 +13,16 @@ class IndexView(APIView):
     def get(self,request):
         return render(request, 'index.html', {})
 
+class AboutView(APIView):
+    def get(self,request):
+        return render(request, 'about.html', {'data':"test about"})
+
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+
+    def list(self, request):
+        return render(request, 'menu.html', {'data':"test menu"})
 
 class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
     queryset = MenuItem.objects.all()

@@ -1,13 +1,58 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Capstone Project</title>
-    </head>
-    <body>
-        <header>
-            <img src="{% static 'img/logo.png' %}" />
-        </header>
-        <h1 style="text-align:center;">Welcome To LittleLemon Restaurant</h1>
-    </body>
-</html>
+
+<!--Main Section-->
+{% block content %}
+
+<section>
+
+    <article id="hero">
+        <h1 class="heading_shadow">SPECIAL OFFER</h1>
+        <p>Good Deal This Weekend</p>
+        <a href="{% url 'book' %}" class="cta"> Book Now </a>
+    </article>
+
+</section>
+
+<!--NEW Section-->
+
+<section>
+
+    <article>
+        <h2>Our New Menu</h2>
+        <img src="{% static 'img/Grill B.jpg' %}">
+        <p>
+            Our menu consists of 12-15 seasonal items based on Italian, Greek, and Turkish culture.
+        </p>
+        <p>
+            <a href="{% url 'menu' %}">See our new menu</a>
+        </p>
+    </article>
+
+    <article>
+        <h2>Book a Table</h2>
+        <img src="{% static 'img/restaurant inside alternative.jpg' %}"/>
+        <p>
+            Reserve your table for an Italian, Greek, and Turkish dining experience.
+        </p>
+        <p>
+            <a href="{% url 'book' %}">Book your table now</a>
+        </p>
+    </article>
+
+    <article>
+        <h2>Opening Hours</h2>
+        <img src="{% static 'img/Mario and Adrian b.jpg' %}"/>
+        <p>
+            The Little Lemon Restaurant is open 7 days a week, except for public holidays. 
+        </p>
+        <ul>
+            <li>Mon - Fri: 2pm - 10pm</li>
+            <li>Sat: 2pm - 11pm</li>
+            <li>Sun: 2pm - 9pm</li>
+        </ul>
+    </article>
+
+</section>
+
+{% endblock %}
