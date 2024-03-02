@@ -8,6 +8,8 @@ from rest_framework.views import APIView
 from .models import MenuItem,Booking
 from .serializers import MenuItemSerializer,BookingSerializer
 
+from .data_pickup.pickup_about import pickup_about
+
 # Create your views here.
 class IndexView(APIView):
     def get(self,request):
@@ -15,7 +17,12 @@ class IndexView(APIView):
 
 class AboutView(APIView):
     def get(self,request):
-        return render(request, 'about.html', {'data':"test about"})
+        # In the production environment, there may not be a need for the follow code.
+        # Here only is for testing some concepts.
+        list_data = pickup_about.get_list()
+        caption = pickup_about.get_caption()
+        about_us = pickup_about.get_readme()
+        return render(request, 'about.html', {'data': list_data, 'about_us': about_us, 'caption': caption})
 
 class MenuItemsView(generics.ListCreateAPIView):
     queryset = MenuItem.objects.all()
