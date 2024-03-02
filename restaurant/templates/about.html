@@ -4,10 +4,34 @@
 {% block content %}
 
 <section>
-    <h1>About Us</h1>
-    <p>
-        {{data}}
-    </p>
+    <article>
+        <h1>{{about_us}}</h1>
+        <!--Row Structure-->
+        <div class="row">
+            <!--First Column-->
+            <div class="column">
+                {% for item in data %}
+                    <p>
+                        {{item}}
+                    </p>
+                {% endfor %}
+            </div> <!--End First Column-->
+    
+            <!--Second Column-->
+            <div class="column">
+                <figure class="figure">
+                    <img
+                        src="{% static 'img/mario-and-adrian.jpg' %}"
+                        alt="Mario and Adrian"
+                    />
+                    <figcaption class="figure-caption">
+                        {{caption}}
+                    </figcaption>
+                </figure>
+            </div> <!--End Second Column-->
+    
+        </div> <!--End Row-->
+    </article>
 </section>
 
 {% endblock %}
