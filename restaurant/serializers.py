@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from rest_framework.validators import UniqueTogetherValidator
+
 from rest_framework import serializers
 from .models import MenuItem,Booking
 
@@ -11,4 +13,12 @@ class MenuItemSerializer(serializers.ModelSerializer):
 class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
-        fields = "__all__"
+        fields = ['name', 'no_of_guests', 'date', 'slot']
+
+        validators = [
+            UniqueTogetherValidator(
+                queryset=Booking.objects.all(),
+                fields=['name','date','slot'],
+                message='data duplication'
+            )
+        ]

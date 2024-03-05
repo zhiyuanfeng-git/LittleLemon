@@ -9,9 +9,10 @@ urlpatterns = [
     path('book/', views.BookingViewSet.as_view(
         {'get':'list','post':'create'}
     ), name="book"),
-    path('reservations/', views.BookingViewSet.as_view(
-        {'get':'list'}
-    ), name="reservations"),
+    path('bookings/', views.BookingViewSet.as_view(
+        {'get':'retrieve'}
+    ), name="bookings"),
+    path('reservations/', views.Reservations.as_view(), name="reservations"),
 
     path('menu/', views.MenuItemsView.as_view(), name='menu'),
     path('menu/<int:pk>', views.SingleMenuItemView.as_view()),

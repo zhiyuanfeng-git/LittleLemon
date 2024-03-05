@@ -13,6 +13,7 @@ class Booking(models.Model):
     name = models.CharField(max_length=255)
     no_of_guests = models.SmallIntegerField(default=1)
     date = models.DateField()
+    slot = models.SmallIntegerField(default=10)
 
     def __str__(self):
         return self.name
