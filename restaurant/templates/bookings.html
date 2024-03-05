@@ -5,6 +5,34 @@
 
 <section>
     <h1>Reservations</h1>
+    <!--Begin Row-->
+    <div class="row">
+        <!--First Column-->
+        <div class="column">
+            <div class="column">
+                <pre id="bookings_data"></pre>
+            </div>
+        </div>
+        <!--End First Column-->
+    </div>
+    <!--End Row-->
+
 </section>
+
+<script>
+    const bookings_data = JSON.parse('{{ bookings_data|safe }}')
+    const pretty_json = JSON.stringify(bookings_data, null, 2)
+    let content = ""
+    for (let i in bookings_data)
+    {
+        let item = bookings_data[i]
+        let name = item.name
+        let date = item.date
+        let slot = item.slot
+        content += `<p>${name} ${date} ${slot}</p>`
+    }
+    
+    document.getElementById('bookings_data').innerHTML = content
+</script>
 
 {% endblock %}
